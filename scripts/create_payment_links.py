@@ -14,32 +14,36 @@ assets/payment-links.js を生成する。
 鍵は ~/.config/stripe/config.toml（stripe CLI が保存したもの）から読む。
 """
 import json
+import os
 import subprocess
 import sys
 import time
 from pathlib import Path
 
 LIVE = "--live" in sys.argv
-KEY_NAME = "live_mode_api_key" if LIVE else "test_mode_api_key"
 
-cfg = (Path.home() / ".config/stripe/config.toml").read_text()
-key = None
-for line in cfg.splitlines():
-    line = line.strip()
-    if line.startswith(KEY_NAME):
-        key = line.split("=", 1)[1].strip().strip("'\"")
-        break
-if not key:
-    sys.exit(f"{KEY_NAME} not found in stripe config")
+# 本番への書き込みはCLIのキーでは権限不足（本番は読み取り専用）。
+# ダッシュボードで作成した制限付きキー（Products/Payment Links=書き込み）を
+# 環境変数 STRIPE_API_KEY で渡すと、そのキーを直接使う。
+ENV_KEY = os.environ.get("STRIPE_API_KEY")
 
-API = "https://api.stripe.com/v1"
+# 認証はStripe CLI（stripe get/post）に委譲する。
+# config.tomlを直接読まない：複数プロジェクトのセクションがあると
+# どのキーが有効かの判定をCLIと二重実装することになるため。
+STRIPE_BIN = str(Path.home() / "bin/stripe")
 
 
-def _curl(args):
-    r = subprocess.run(
-        ["curl", "-sS", "-u", f"{key}:"] + args,
-        capture_output=True, text=True, check=True,
-    )
+def _cli(verb, path, params):
+    args = [STRIPE_BIN, verb, path]
+    for k, v in (params or {}).items():
+        args += ["-d", f"{k}={v}"]
+    if ENV_KEY:
+        args += ["--api-key", ENV_KEY]
+    elif LIVE:
+        args.append("--live")
+    r = subprocess.run(args, capture_output=True, text=True)
+    if r.returncode != 0:
+        raise RuntimeError((r.stderr or r.stdout)[:400])
     d = json.loads(r.stdout)
     if "error" in d:
         raise RuntimeError(json.dumps(d["error"], ensure_ascii=False)[:400])
@@ -47,17 +51,11 @@ def _curl(args):
 
 
 def post(path, params):
-    args = [f"{API}{path}"]
-    for k, v in params.items():
-        args += ["-d", f"{k}={v}"]
-    return _curl(args)
+    return _cli("post", f"/v1{path}", params)
 
 
 def get(path, params=None):
-    args = ["-G", f"{API}{path}"]
-    for k, v in (params or {}).items():
-        args += ["-d", f"{k}={v}"]
-    return _curl(args)
+    return _cli("get", f"/v1{path}", params)
 
 
 # ─── カタログ定義（create_catalog.py と同一） ───
