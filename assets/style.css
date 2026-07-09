@@ -1,0 +1,400 @@
+/* カブクリ｜山梨在宅リハビリクリニック 共通スタイル
+   カラー・トンマナ: repo_kabukuri/marketing/lps/_guidelines/kabukuri-lp-spec.md 準拠 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #67C5C0;
+  --primary-dark: #4CAAA5;
+  --primary-pale: #EAF7F6;
+  --bg: #F8FAFA;
+  --section-bg: #F7FBFB;
+  --border: #E6EEEE;
+  --text: #2B2B2B;
+  --subtext: #666666;
+  --accent-red: #E8604C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* ─── Nav ─── */
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-brand {
+  font-size: 12px;
+  color: var(--subtext);
+  line-height: 1.3;
+  text-decoration: none;
+}
+.nav-brand strong {
+  display: block;
+  font-size: 18px;
+  color: var(--primary-dark);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--subtext);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--primary-dark); }
+.nav-cta {
+  background: var(--primary);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px !important;
+}
+.nav-cta:hover { background: var(--primary-dark); }
+@media (max-width: 680px) {
+  .nav-links li:not(.keep-mobile) { display: none; }
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 84px 24px 92px;
+}
+.hero-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 16px;
+  opacity: 0.92;
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.9;
+}
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 17px;
+  padding: 16px 44px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+  transition: opacity 0.2s;
+}
+.btn-white:hover { opacity: 0.88; }
+
+/* ─── Shared ─── */
+.section { padding: 76px 24px; }
+.section.bg-soft { background: var(--section-bg); }
+.container { max-width: 900px; margin: 0 auto; }
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  margin-bottom: 36px;
+  line-height: 1.4;
+}
+.lead {
+  font-size: 16px;
+  line-height: 2.0;
+  color: var(--subtext);
+  margin-bottom: 40px;
+  max-width: 760px;
+}
+
+/* ─── Feature cards ─── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 640px) { .feature-grid { grid-template-columns: 1fr; } }
+.feature-card {
+  background: var(--primary-pale);
+  border-radius: 14px;
+  padding: 30px 24px;
+  text-align: center;
+}
+.feature-card .icon { font-size: 30px; margin-bottom: 12px; }
+.feature-card h3 { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+.feature-card p { font-size: 13px; color: var(--subtext); line-height: 1.7; }
+
+/* ─── Pricing table ─── */
+.pricing-note { font-size: 13px; color: var(--subtext); margin-bottom: 22px; }
+.table-wrap { overflow-x: auto; }
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.pricing-table th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+.pricing-table th:first-child { text-align: left; padding-left: 20px; }
+.pricing-table th small { font-weight: 400; font-size: 11px; }
+.pricing-table td {
+  padding: 13px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.pricing-table td:first-child { text-align: left; padding-left: 20px; font-weight: 500; }
+.pricing-table tr:last-child td { border-bottom: none; }
+.pricing-table tr:nth-child(even) td { background: #FAFCFC; }
+.pricing-sub { font-size: 12px; color: var(--subtext); margin-top: 12px; }
+
+/* ─── Flow ─── */
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+@media (max-width: 600px) { .flow-steps { grid-template-columns: 1fr; } }
+.flow-step {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+}
+.flow-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.flow-step h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.flow-step p { font-size: 14px; color: var(--subtext); line-height: 1.8; }
+
+/* ─── Notes ─── */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+@media (max-width: 620px) { .notes-grid { grid-template-columns: 1fr; } }
+.note-box { border-radius: 12px; padding: 26px; }
+.note-box.warn { background: #FDF1EE; }
+.note-box.plain { background: #fff; border: 1px solid var(--border); }
+.note-box.soft { background: var(--primary-pale); }
+.note-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+.note-box p, .note-box li { font-size: 14px; color: var(--subtext); line-height: 1.8; }
+.note-box ul { padding-left: 18px; }
+.notes-full { margin-top: 22px; }
+
+/* ─── Payment page ─── */
+.pay-methods {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 6px;
+}
+.pay-badge {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+.selector-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  margin-bottom: 48px;
+}
+.selector-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+.choice-group { margin-bottom: 24px; }
+.choice-label { font-size: 13px; font-weight: 700; color: var(--subtext); margin-bottom: 10px; }
+.choice-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.choice-btn {
+  border: 1.5px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text);
+}
+.choice-btn:hover { border-color: var(--primary); }
+.choice-btn.active {
+  border-color: var(--primary);
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+.selected-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--section-bg);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.selected-summary .sel-name { font-size: 15px; font-weight: 700; }
+.selected-summary .sel-price { font-size: 24px; font-weight: 700; color: var(--primary-dark); }
+.btn-pay {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.btn-pay:hover { background: var(--primary-dark); }
+.btn-pay[aria-disabled="true"] { background: #ccc; pointer-events: none; }
+.btn-pay-sm {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 7px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-pay-sm:hover { background: var(--primary-dark); }
+.list-table td { white-space: normal; }
+
+/* ─── Legal (特商法) ─── */
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.legal-table th {
+  width: 220px;
+  background: var(--section-bg);
+  text-align: left;
+  padding: 16px 20px;
+  font-weight: 700;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.legal-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.9;
+  color: var(--text);
+}
+.legal-table tr:last-child th, .legal-table tr:last-child td { border-bottom: none; }
+@media (max-width: 560px) {
+  .legal-table th { width: 120px; padding: 14px 12px; font-size: 13px; }
+  .legal-table td { padding: 14px 12px; font-size: 13px; }
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 72px 24px;
+}
+.cta-section h2 { margin-bottom: 12px; }
+.cta-section p { opacity: 0.92; max-width: 520px; margin: 0 auto 36px; font-size: 15px; }
+.cta-note { font-size: 12px; opacity: 0.75; margin-top: 16px; }
+
+/* ─── Footer ─── */
+footer.site-footer {
+  background: #263332;
+  color: #9DB4B2;
+  padding: 48px 24px 40px;
+  font-size: 13px;
+}
+.footer-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.footer-name { color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.footer-sub { margin-bottom: 6px; }
+.footer-addr { font-size: 12px; margin-bottom: 22px; }
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.footer-links a { color: #C8D9D7; text-decoration: none; font-size: 13px; }
+.footer-links a:hover { color: #fff; text-decoration: underline; }
+.footer-copy { font-size: 11px; opacity: 0.75; line-height: 1.8; }
+
+/* ─── Page header (下層ページ) ─── */
+.page-header {
+  background: var(--section-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 24px 48px;
+  text-align: center;
+}
+.page-header h1 { font-size: clamp(24px, 4vw, 34px); font-weight: 700; margin-bottom: 10px; }
+.page-header p { font-size: 14px; color: var(--subtext); max-width: 640px; margin: 0 auto; line-height: 1.9; }

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お支払い｜カブクリ - 山梨在宅リハビリクリニック</title>
+  <meta name="description" content="カブクリのお支払いページ。ご希望の商品を選択し、クレジットカード・PayPay・銀行振込・コンビニ決済でお支払いいただけます。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">
+      山梨在宅リハビリクリニック
+      <strong>カブクリ</strong>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">カブクリとは</a></li>
+      <li><a href="index.html#price">料金表</a></li>
+      <li><a href="index.html#flow">診療の流れ</a></li>
+      <li class="keep-mobile"><a href="#select" class="nav-cta">商品を選ぶ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page header -->
+<header class="page-header">
+  <h1>お支払い</h1>
+  <p>ご希望の商品を選択すると、Stripeの安全な決済ページに移動します。会員登録・ログインは不要です。<br>お支払い後に医師のオンライン診察を行い、処方が適さないと判断された場合は全額返金いたします。</p>
+  <div class="pay-methods" style="justify-content:center">
+    <span class="pay-badge">クレジットカード</span>
+    <span class="pay-badge" style="color:#E8604C">PayPay</span>
+    <span class="pay-badge">銀行振込</span>
+    <span class="pay-badge">コンビニ決済</span>
+  </div>
+</header>
+
+<!-- Selector -->
+<section class="section" id="select">
+  <div class="container">
+    <div class="label">Select Your Plan</div>
+    <h2>商品を選択してお支払い</h2>
+
+    <div class="selector-card">
+      <div class="choice-group">
+        <div class="choice-label">1. 用量を選択（初めての方は 2.5mg）</div>
+        <div class="choice-row" id="dose-row"></div>
+      </div>
+      <div class="choice-group">
+        <div class="choice-label">2. 本数を選択（週1回・1回1本使用）</div>
+        <div class="choice-row" id="set-row"></div>
+      </div>
+      <div class="selected-summary">
+        <div>
+          <div class="sel-name" id="sel-name">マンジャロ 2.5mg・2本セット</div>
+          <div style="font-size:12px;color:var(--subtext)">税込・診察料・クール便送料込み</div>
+        </div>
+        <div class="sel-price" id="sel-price">¥13,100</div>
+        <a class="btn-pay" id="pay-btn" href="#" target="_blank" rel="noopener">決済ページへ進む</a>
+      </div>
+      <p class="pricing-sub" id="pay-note" style="margin-top:14px"></p>
+    </div>
+
+    <div class="label">All Products</div>
+    <h2 style="font-size:20px">全商品一覧</h2>
+    <p class="pricing-note">各商品の「購入する」ボタンからも、そのまま決済ページへお進みいただけます。</p>
+    <div class="table-wrap">
+      <table class="pricing-table list-table">
+        <thead>
+          <tr><th>商品</th><th>内容</th><th>価格（税込）</th><th></th></tr>
+        </thead>
+        <tbody id="all-products"></tbody>
+      </table>
+    </div>
+    <p class="pricing-sub">※価格はすべて税込で、診察料・クール便送料を含みます。<br>※初めての方は2.5mgからの開始となります。用量は医師の判断により調整いたします。</p>
+  </div>
+</section>
+
+<!-- Notes -->
+<section class="section bg-soft">
+  <div class="container">
+    <div class="notes-grid">
+      <div class="note-box plain">
+        <h3>お支払いについて</h3>
+        <ul>
+          <li>決済はStripe社のシステムを利用しています</li>
+          <li>クレジットカード・PayPayは即時に決済が完了します</li>
+          <li>銀行振込・コンビニ決済は、ご入金確認後の発送となります</li>
+          <li>領収書は決済完了メールからダウンロードできます</li>
+        </ul>
+      </div>
+      <div class="note-box soft">
+        <h3>返金について</h3>
+        <p>お支払い後の医師の診察により処方が適さないと判断された場合は、全額返金いたします。商品の性質上（要冷蔵の医薬品）、発送後の返品・交換はお受けできません。詳細は<a href="tokushoho.html">特定商取引法に基づく表記</a>をご確認ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-name">カブクリ</p>
+    <p class="footer-sub">マンジャロ専門オンライン診療｜提供：山梨在宅リハビリクリニック</p>
+    <p class="footer-addr">〒400-0071 山梨県甲府市羽黒町1287-3　TEL: 050-5292-7882</p>
+    <div class="footer-links">
+      <a href="index.html">ホーム</a>
+      <a href="payment.html">お支払い</a>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+    </div>
+    <p class="footer-copy">本サイトで紹介する治療は自由診療（保険適用外）です。<br>© 2026 山梨在宅リハビリクリニック（カブクリ）</p>
+  </div>
+</footer>
+
+<script src="assets/products.js"></script>
+<script src="assets/payment-links.js"></script>
+<script>
+  // payment-links.js が定義する KBK_PAYMENT_LINKS: { lookup_key: "https://buy.stripe.com/..." }
+  const LINKS = (typeof KBK_PAYMENT_LINKS !== "undefined") ? KBK_PAYMENT_LINKS : {};
+
+  let selDose = KBK_DOSES[0];
+  let selSet = KBK_SETS[0];
+
+  function renderChoices() {
+    const doseRow = document.getElementById("dose-row");
+    const setRow = document.getElementById("set-row");
+    doseRow.innerHTML = "";
+    setRow.innerHTML = "";
+    KBK_DOSES.forEach(d => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "choice-btn" + (d === selDose ? " active" : "");
+      b.textContent = d.dose;
+      b.onclick = () => { selDose = d; renderChoices(); };
+      doseRow.appendChild(b);
+    });
+    KBK_SETS.forEach(s => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "choice-btn" + (s === selSet ? " active" : "");
+      b.textContent = s.pens + "本" + (s.note ? `（${s.note}）` : "");
+      b.onclick = () => { selSet = s; renderChoices(); };
+      setRow.appendChild(b);
+    });
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const idx = KBK_SETS.indexOf(selSet);
+    const price = KBK_PRICES[selDose.dose][idx];
+    const key = kbkLookupKey(selDose.token, selSet.pens);
+    document.getElementById("sel-name").textContent = `マンジャロ ${selDose.dose}・${selSet.label}`;
+    document.getElementById("sel-price").textContent = kbkYen(price);
+    const btn = document.getElementById("pay-btn");
+    const note = document.getElementById("pay-note");
+    if (LINKS[key]) {
+      btn.href = LINKS[key];
+      btn.removeAttribute("aria-disabled");
+      note.textContent = "";
+    } else {
+      btn.href = "#";
+      btn.setAttribute("aria-disabled", "true");
+      note.textContent = "この商品の決済リンクは現在準備中です。お電話またはメールにてお問い合わせください。";
+    }
+  }
+
+  function renderAllProducts() {
+    const tbody = document.getElementById("all-products");
+    KBK_DOSES.forEach(d => {
+      KBK_SETS.forEach((s, i) => {
+        const key = kbkLookupKey(d.token, s.pens);
+        const price = KBK_PRICES[d.dose][i];
+        const tr = document.createElement("tr");
+        const link = LINKS[key]
+          ? `<a class="btn-pay-sm" href="${LINKS[key]}" target="_blank" rel="noopener">購入する</a>`
+          : `<span style="font-size:12px;color:var(--subtext)">準備中</span>`;
+        tr.innerHTML = `<td>マンジャロ ${d.dose}</td><td>${s.label}</td><td style="font-weight:700">${kbkYen(price)}</td><td>${link}</td>`;
+        tbody.appendChild(tr);
+      });
+    });
+    KBK_OPTIONS.forEach(o => {
+      const tr = document.createElement("tr");
+      const link = LINKS[o.token]
+        ? `<a class="btn-pay-sm" href="${LINKS[o.token]}" target="_blank" rel="noopener">購入する</a>`
+        : `<span style="font-size:12px;color:var(--subtext)">準備中</span>`;
+      tr.innerHTML = `<td>${o.name}</td><td>オプション</td><td style="font-weight:700">${kbkYen(o.price)}</td><td>${link}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  renderChoices();
+  renderAllProducts();
+</script>
+
+</body>
+</html>
